@@ -431,6 +431,19 @@ function submitOrder(event){
         whatsapp +
         "?text=" +
         message;
+    fetch("https://api.github.com/repos/mdsaydurrahman32/Landing-page/issues", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer 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",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "New Order",
+    body: `Name: ${name}
+Phone: ${phone}
+Address: ${address}`
+  })
+});
 
 }
 
