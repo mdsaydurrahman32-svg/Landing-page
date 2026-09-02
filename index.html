@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XTrime Power - Order Now</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    color:#222;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    background:#fff;
+    min-height:100vh;
+}
+
+/* Product Image */
+.product-image{
+    width:100%;
+    display:block;
+}
+
+/* Product Info */
+.product-info{
+    padding:18px 24px;
+}
+
+.product-name{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.price-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.old-price{
+    font-size:28px;
+    color:#999;
+    text-decoration:line-through;
+}
+
+.current-price{
+    font-size:34px;
+    font-weight:bold;
+    color:#c91c24;
+}
+
+/* Quantity */
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.qty-box{
+    display:flex;
+    border:1px solid #777;
+}
+
+.qty-box button{
+    width:50px;
+    height:50px;
+    background:white;
+    border:0;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.qty-number{
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-left:1px solid #777;
+    border-right:1px solid #777;
+    font-size:22px;
+}
+
+/* Buttons */
+.btn{
+    width:100%;
+    border:0;
+    border-radius:6px;
+    padding:15px;
+    margin-top:10px;
+    font-size:23px;
+    color:white;
+    cursor:pointer;
+}
+
+.order-btn{
+    background:#d71920;
+}
+
+.cart-btn{
+    background:#36a6d5;
+}
+
+.call-btn{
+    background:#22a447;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+}
+
+/* Trust Box */
+.trust{
+    background:#22a447;
+    color:white;
+    padding:18px;
+    margin-top:10px;
+    border-radius:6px;
+    text-align:center;
+    font-size:19px;
+    line-height:1.7;
+}
+
+/* Delivery */
+.delivery{
+    margin-top:20px;
+    border-top:1px solid #ddd;
+}
+
+.delivery-row{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid #ddd;
+    font-size:18px;
+}
+
+.free{
+    color:#159447;
+    font-weight:bold;
+}
+
+/* Order Form */
+.order-form{
+    display:none;
+    background:#f7f7f7;
+    padding:20px;
+    margin-top:20px;
+    border-radius:8px;
+}
+
+.order-form h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+input, textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+.submit{
+    background:#d71920;
+}
+
+/* Description */
+.description{
+    padding:25px;
+    line-height:1.8;
+}
+
+.description h2{
+    margin-bottom:12px;
+}
+
+/* Sticky Call */
+.sticky-call{
+    position:fixed;
+    bottom:12px;
+    right:12px;
+    background:#22a447;
+    color:white;
+    padding:14px 20px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 3px 12px #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- PRODUCT IMAGE -->
+    <!-- GitHub-এ তোমার ছবির নাম product.jpg রাখবে -->
+    <img src="product.jpg"
+         class="product-image"
+         alt="XTrime Power">
+
+    <div class="product-info">
+
+        <!-- PRODUCT NAME -->
+        <h1 class="product-name">XTrime Power</h1>
+
+        <!-- PRICE -->
+        <div class="price-area">
+            <span class="old-price">Price 2240</span>
+            <span class="current-price">Price 1120</span>
+        </div>
+
+        <!-- QUANTITY -->
+        <div class="quantity">
+
+            <span>পরিমাণ :</span>
+
+            <div class="qty-box">
+
+                <button onclick="decrease()">−</button>
+
+                <div class="qty-number" id="quantity">
+                    1
+                </div>
+
+                <button onclick="increase()">+</button>
+
+            </div>
+
+        </div>
+
+        <!-- ORDER -->
+        <button class="btn order-btn"
+                onclick="showOrderForm()">
+            অর্ডার করুন
+        </button>
+
+        <!-- CART -->
+        <button class="btn cart-btn"
+                onclick="addCart()">
+            কার্টে রাখুন
+        </button>
+
+        <!-- CALL -->
+        <a href="tel:01947398906"
+           class="btn call-btn">
+            ☎️ 01947398906
+        </a>
+
+        <!-- TRUST -->
+        <div class="trust">
+            📞 ✨ আমরা বিশ্বাস করি, ভালো পণ্য মানেই সুন্দর প্যাকেজিং নয় —
+            বরং ভালো উপাদান, বিশ্বস্ততা এবং গ্রাহকের আস্থা।
+            আপনি নিশ্চিন্তে অর্ডার করতে পারেন। ✨
+        </div>
+
+        <!-- SECOND CALL -->
+        <a href="tel:01947398906"
+           class="btn call-btn">
+            📞 01947398906
+        </a>
+
+        <!-- DELIVERY -->
+        <div class="delivery">
+
+            <div class="delivery-row">
+                <span>সারা বাংলাদেশে ডেলিভারি</span>
+                <span class="free">FREE</span>
+            </div>
+
+            <div class="delivery-row">
+                <span>ডেলিভারি চার্জ</span>
+                <span class="free">Free</span>
+            </div>
+
+        </div>
+
+
+        <!-- ORDER FORM -->
+        <div class="order-form" id="orderForm">
+
+            <h2>অর্ডার করতে তথ্য দিন</h2>
+
+            <form onsubmit="submitOrder(event)">
+
+                <input type="text"
+                       id="name"
+                       placeholder="আপনার নাম"
+                       required>
+
+                <input type="tel"
+                       id="phone"
+                       placeholder="মোবাইল নম্বর"
+                       required>
+
+                <textarea id="address"
+                          rows="4"
+                          placeholder="সম্পূর্ণ ঠিকানা"
+                          required></textarea>
+
+                <button class="btn submit"
+                        type="submit">
+                    অর্ডার কনফার্ম করুন
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+    <div class="description">
+
+        <h2>পণ্যের বিবরণ</h2>
+
+        <p>
+            XTrime Power সম্পর্কে বিস্তারিত তথ্য এখানে লিখুন।
+            আপনার পণ্যের বৈশিষ্ট্য, ব্যবহারবিধি এবং অন্যান্য
+            প্রয়োজনীয় তথ্য এখানে দিতে পারবেন।
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- STICKY CALL BUTTON -->
+<a href="tel:01947398906"
+   class="sticky-call">
+   📞 Call Now
+</a>
+
+
+<script>
+
+let qty = 1;
+
+function increase(){
+
+    qty++;
+
+    document.getElementById("quantity").innerText = qty;
+
+}
+
+function decrease(){
+
+    if(qty > 1){
+        qty--;
+    }
+
+    document.getElementById("quantity").innerText = qty;
+
+}
+
+
+function showOrderForm(){
+
+    document.getElementById("orderForm").style.display = "block";
+
+    document.getElementById("orderForm").scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function addCart(){
+
+    alert("Product কার্টে যোগ করা হয়েছে।");
+
+}
+
+
+function submitOrder(event){
+
+    event.preventDefault();
+
+    let name =
+        document.getElementById("name").value;
+
+    let phone =
+        document.getElementById("phone").value;
+
+    let address =
+        document.getElementById("address").value;
+
+
+    /*
+      এখানে তোমার WhatsApp নম্বর বসাবে।
+      880 দিয়ে শুরু করতে হবে।
+    */
+
+    let whatsapp =
+        "8801947398906";
+
+
+    let message =
+        "নতুন অর্ডার%0A%0A" +
+        "Product: XTrime Power%0A" +
+        "Quantity: " + qty + "%0A" +
+        "Price: 1120 টাকা%0A" +
+        "Delivery: FREE%0A%0A" +
+        "নাম: " + name + "%0A" +
+        "ফোন: " + phone + "%0A" +
+        "ঠিকানা: " + address;
+
+
+    window.location.href =
+        "https://wa.me/" +
+        whatsapp +
+        "?text=" +
+        message;
+
+}
+
+</script>
+
+</body>
+</html>
